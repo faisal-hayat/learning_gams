@@ -1,0 +1,164 @@
+GAMS 42.5.0  cf11b917 Mar 30, 2023          WEX-WEI x86 64bit/MS Windows - 04/06/23 00:32:56 Page 1
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+C o m p i l a t i o n
+
+
+   1  Positive Variables    Xcorn, Xwheat, Xcotton;
+   2  Variables             Z;
+   3   
+   4  Equations     obj, land, labor;
+   5   
+   6  obj..  Z =e= 109 * Xcorn + 90 * Xwheat + 115 * Xcotton;
+   7  land..             Xcorn +      Xwheat +       Xcotton =l= 100;
+   8  labor..        6 * Xcorn +  4 * Xwheat +   8 * Xcotton =l= 500;
+   9   
+  10  Model farmproblem / obj, land, labor /;
+  11   
+  12  solve farmproblem using LP maximizing Z;
+
+
+COMPILATION TIME     =        0.000 SECONDS      2 MB  42.5.0 cf11b917 WEX-WEI
+GAMS 42.5.0  cf11b917 Mar 30, 2023          WEX-WEI x86 64bit/MS Windows - 04/06/23 00:32:56 Page 2
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Equation Listing    SOLVE farmproblem Using LP From line 12
+
+
+---- obj  =E=  
+
+obj..  - 109*Xcorn - 90*Xwheat - 115*Xcotton + Z =E= 0 ; (LHS = 0)
+     
+
+---- land  =L=  
+
+land..  Xcorn + Xwheat + Xcotton =L= 100 ; (LHS = 0)
+     
+
+---- labor  =L=  
+
+labor..  6*Xcorn + 4*Xwheat + 8*Xcotton =L= 500 ; (LHS = 0)
+     
+GAMS 42.5.0  cf11b917 Mar 30, 2023          WEX-WEI x86 64bit/MS Windows - 04/06/23 00:32:56 Page 3
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Column Listing      SOLVE farmproblem Using LP From line 12
+
+
+---- Xcorn  
+
+Xcorn
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+     -109       obj
+        1       land
+        6       labor
+
+
+---- Xwheat  
+
+Xwheat
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+      -90       obj
+        1       land
+        4       labor
+
+
+---- Xcotton  
+
+Xcotton
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+     -115       obj
+        1       land
+        8       labor
+
+
+---- Z  
+
+Z
+                (.LO, .L, .UP, .M = -INF, 0, +INF, 0)
+        1       obj
+
+GAMS 42.5.0  cf11b917 Mar 30, 2023          WEX-WEI x86 64bit/MS Windows - 04/06/23 00:32:56 Page 4
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Range Statistics    SOLVE farmproblem Using LP From line 12
+
+
+RANGE STATISTICS (ABSOLUTE NON-ZERO FINITE VALUES)
+
+RHS       [min, max] : [ 1.000E+02, 5.000E+02] - Zero values observed as well
+Bound     [min, max] : [        NA,        NA] - Zero values observed as well
+Matrix    [min, max] : [ 1.000E+00, 1.150E+02]
+
+GAMS 42.5.0  cf11b917 Mar 30, 2023          WEX-WEI x86 64bit/MS Windows - 04/06/23 00:32:56 Page 5
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Model Statistics    SOLVE farmproblem Using LP From line 12
+
+
+MODEL STATISTICS
+
+BLOCKS OF EQUATIONS           3     SINGLE EQUATIONS            3
+BLOCKS OF VARIABLES           4     SINGLE VARIABLES            4
+NON ZERO ELEMENTS            10
+
+
+GENERATION TIME      =        0.000 SECONDS      3 MB  42.5.0 cf11b917 WEX-WEI
+GAMS 42.5.0  cf11b917 Mar 30, 2023          WEX-WEI x86 64bit/MS Windows - 04/06/23 00:32:56 Page 6
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Solution Report     SOLVE farmproblem Using LP From line 12
+
+
+               S O L V E      S U M M A R Y
+
+     MODEL   farmproblem         OBJECTIVE  Z
+     TYPE    LP                  DIRECTION  MAXIMIZE
+     SOLVER  CPLEX               FROM LINE  12
+
+**** SOLVER STATUS     1 Normal Completion
+**** MODEL STATUS      1 Optimal
+**** OBJECTIVE VALUE             9950.0000
+
+ RESOURCE USAGE, LIMIT          0.000 10000000000.000
+ ITERATION COUNT, LIMIT         2    2147483647
+--- *** This solver runs with a demo license. No commercial use.
+--- GMO setup time: 0.00s
+--- GMO memory 0.50 Mb (peak 0.50 Mb)
+--- Dictionary memory 0.00 Mb
+--- Cplex 22.1.1.0 link memory 0.00 Mb (peak 0.00 Mb)
+--- Starting Cplex
+
+
+--- LP status (1): optimal.
+--- Cplex Time: 0.00sec (det. 0.01 ticks)
+
+
+Optimal solution found
+Objective:         9950.000000
+
+
+                           LOWER          LEVEL          UPPER         MARGINAL
+
+---- EQU obj                 .              .              .             1.0000      
+---- EQU land              -INF          100.0000       100.0000        52.0000      
+---- EQU labor             -INF          500.0000       500.0000         9.5000      
+
+                           LOWER          LEVEL          UPPER         MARGINAL
+
+---- VAR Xcorn               .            50.0000        +INF             .          
+---- VAR Xwheat              .            50.0000        +INF             .          
+---- VAR Xcotton             .              .            +INF          -13.0000      
+---- VAR Z                 -INF         9950.0000        +INF             .          
+
+
+**** REPORT SUMMARY :        0     NONOPT
+                             0 INFEASIBLE
+                             0  UNBOUNDED
+
+
+EXECUTION TIME       =        0.047 SECONDS      3 MB  42.5.0 cf11b917 WEX-WEI
+
+
+USER: GAMS Demo license for Faisal Faisal            G230405|0002CO-GEN
+      OCRAIi Solutions, Pakistan                               DL089442
+
+
+**** FILE SUMMARY
+
+Input      C:\Users\ft\Desktop\learning_gams\wheat_problem\quick_start.gms
+Output     C:\Users\ft\Desktop\learning_gams\wheat_problem\quick_start.lst

@@ -1,0 +1,20 @@
+B 3 C o m p i l a t i o n
+B 23 Equation Listing    SOLVE farmproblem Using LP From line 12
+D 26 obj
+D 31 land
+D 36 labor
+B 42 Column Listing      SOLVE farmproblem Using LP From line 12
+E 45 Xcorn
+E 54 Xwheat
+E 63 Xcotton
+E 72 Z
+B 80 Range Statistics    SOLVE farmproblem Using LP From line 12
+B 91 Model Statistics    SOLVE farmproblem Using LP From line 12
+B 104 Solution Report     SOLVE farmproblem Using LP From line 12
+F 137 obj
+F 138 land
+F 139 labor
+G 143 Xcorn
+G 144 Xwheat
+G 145 Xcotton
+G 146 Z
